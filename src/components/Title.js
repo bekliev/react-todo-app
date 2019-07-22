@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { getSize as gs } from '../utils';
+import { getSize as gs } from '../base/utils';
 
 const Title = styled.h1`
   ${({ fs }) => `font-size: ${gs(fs)}`}

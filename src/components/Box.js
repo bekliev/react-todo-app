@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { getSize as gs } from '../utils';
+import { getSize as gs } from '../base/utils';
 
 const styles = {
   borderRadius: gs(28),

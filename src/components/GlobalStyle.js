@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { baseSize } from '../config';
-import { getSize as gs } from '../utils';
+import { baseSize } from '../base/config';
+import { getSize as gs } from '../etc/utils';
 
 const GlobalStyle = createGlobalStyle`
   html {
