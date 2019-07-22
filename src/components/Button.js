@@ -13,12 +13,12 @@ const Button = styled.button`
   ${({ color }) => [
     color === 'red' && `
       background-color: ${colors.red.base};
-      &:hover { background-color: ${colors.red.hover} }
+      &:hover, &:focus { background-color: ${colors.red.hover} }
       &.active, &:active { background-color: ${colors.red.active} }
     `,
     color === 'blue' && `
       background-color: ${colors.blue.base};
-      &:hover { background-color: ${colors.blue.hover} }
+      &:hover, &:focus { background-color: ${colors.blue.hover} }
       &.active, &:active { background-color: ${colors.blue.active} }
     `,
   ].filter(Boolean).join('')}
