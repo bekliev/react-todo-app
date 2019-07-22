@@ -1,0 +1,7 @@
+[ 
+  {"task":"Задание 1","done":true}, 
+  {"task":"Задание 2","done":true}, 
+  {"task":"Задание 3","done":false}, 
+  {"task":"Задание 4","done":false}, 
+  {"task":"Задание 5","done":true}
+]
