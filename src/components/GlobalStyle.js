@@ -1,7 +1,8 @@
+import React from 'react';
 import { createGlobalStyle } from 'styled-components'
 
 import { baseSize } from '../base/config';
-import { getSize as gs } from '../etc/utils';
+import { getSize as gs } from '../base/utils';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -22,4 +23,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default GlobalStyle;
+export default React.memo(GlobalStyle);

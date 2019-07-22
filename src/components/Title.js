@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components'
 
 import { getSize as gs } from '../base/utils';
@@ -8,4 +9,4 @@ const Title = styled.h1`
   ${({ mb }) => `margin-bottom: ${gs(mb)}`}
 `;
 
-export default Title;
+export default React.memo(Title);

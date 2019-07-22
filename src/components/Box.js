@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components'
+
 import { getSize as gs } from '../base/utils';
 
 const styles = {
@@ -15,4 +17,4 @@ const Box = styled.div`
   max-width: ${styles.maxWidth};
 `;
 
-export default Box;
+export default React.memo(Box);
