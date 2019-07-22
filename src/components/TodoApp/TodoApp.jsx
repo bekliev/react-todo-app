@@ -3,22 +3,26 @@ import styled from 'styled-components';
 
 import { getSize as gs } from '../../base/utils';
 
+import { TodoAppContextProvider } from './state/';
+
 import Box from '../Box';
 import Title from '../Title';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
 
-const TodoApp = React.memo(({ todos }) => (
+const TodoApp = React.memo(() => (
   <Box>
     <Title fs={64} mt={0} mb={0}>Todo List</Title>
 
     <Spacer size={50} />
 
-    <AddTodoForm />
+    <TodoAppContextProvider>
+      <AddTodoForm />
 
-    <Spacer size={40} />
+      <Spacer size={40} />
 
-    <TodoList todos={todos} />
+      <TodoList />
+    </TodoAppContextProvider>
   </Box>
 ));
 

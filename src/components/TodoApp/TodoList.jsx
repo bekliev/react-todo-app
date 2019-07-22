@@ -3,11 +3,17 @@ import styled from 'styled-components';
 
 import { getSize as gs } from '../../base/utils';
 
+import { TodoAppContext } from './state/';
+
 import Icon from '../Icon';
 import Button from '../Button';
 
-const TodoList = React.memo(({ todos }) => (
-  todos.length === 0
+const TodoList = React.memo(() => {
+  const {state: todos} = React.useContext(TodoAppContext);
+
+  console.log({todos})
+
+  return todos.length === 0
     ? <p style={{ color: 'red' }}>No todos to show.<br />Create a new one!</p>
     : (
       <Todos>
@@ -21,7 +27,7 @@ const TodoList = React.memo(({ todos }) => (
         ))}
       </Todos>
     )
-));
+});
 
 const Todos = styled.ol`
   margin: 0;
