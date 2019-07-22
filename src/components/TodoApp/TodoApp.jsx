@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { getSize as gs } from '../../base/utils';
 
-import { TodoAppContextProvider } from './state/';
+import { TodoAppContextProvider } from './state/context';
 
 import Box from '../Box';
 import Title from '../Title';

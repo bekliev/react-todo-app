@@ -10,12 +10,12 @@ export const newTodo = name => ({
 
 export const deleteTodo = index => ({
   type: DELETE,
-  index,
+  index: Number(index),
 });
 
 export const toggleTodo = index => ({
   type: TOGGLE,
-  index,
+  index: Number(index),
 });
 
 export const resetTodos = () => ({

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import { getSize as gs } from '../../base/utils';
 
-import { ACTIONS, TodoAppContext } from './state/';
+import { newTodo } from './state/actions';
+import { TodoAppContext } from './state/context';
 
 import Icon from '../Icon';
 import Button from '../Button';
@@ -11,18 +12,20 @@ import Button from '../Button';
 const AddTodoForm = () => {
   const { dispatch } = React.useContext(TodoAppContext);
 
-  console.log({dispatch})
-
-  const handleSubmit = e => {
+  const handleSubmit = React.useCallback(e => {
+    // Prevent the default browser's action
     e.preventDefault();
 
+    // Retrieve required things
     const field = e.currentTarget.elements['task-name'];
     const taskName = field.value;
 
-    dispatch(ACTIONS.newTodo(taskName));
+    // Update the state
+    dispatch(newTodo(taskName));
 
+    // Reset value
     field.value = '';
-  }
+  }, [dispatch]);
 
   return (
     <Form onSubmit={handleSubmit}>

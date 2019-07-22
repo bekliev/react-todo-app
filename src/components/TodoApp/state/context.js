@@ -1,17 +1,17 @@
 import React from 'react';
 
 import data from './data.json';
-import { ACTIONS } from './';
+import * as ACTIONS from './actions';
 
 const TodoAppContext = React.createContext();
 
 const initialState = data;
 
-const reducer = (state, action) => {
+const reducer = (todos, action) => {
   switch (action.type) {
     case ACTIONS.NEW:
       return [
-        ...state,
+        ...todos,
         {
           task: action.name,
           done: false,
@@ -19,10 +19,15 @@ const reducer = (state, action) => {
       ];
 
     case ACTIONS.DELETE:
-      return { ...state, count: state.count + 1 };
+      return [
+        ...todos.slice(0, action.index),
+        ...todos.slice(action.index + 1)
+      ];
 
     case ACTIONS.TOGGLE:
-      return { ...state, count: state.count - 1 };
+      const newTodos = [...todos];
+      newTodos[action.index].done = !(newTodos[action.index].done);
+      return newTodos;
 
     case ACTIONS.RESET:
       return initialState;
@@ -32,12 +37,12 @@ const reducer = (state, action) => {
 };
 
 function TodoAppContextProvider(props) {
-  let [state, dispatch] = React.useReducer(reducer, initialState);
+  let [todos, dispatch] = React.useReducer(reducer, initialState);
 
   return (
     <TodoAppContext.Provider
       value={{
-        state,
+        todos,
         dispatch
       }}>
 
