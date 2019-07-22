@@ -5,7 +5,11 @@ import { getSize as gs } from '../utils';
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-size: ${baseSize}px;
+    font-size: ${baseSize / 2}px;
+
+    @media (min-width: 768px) {
+      font-size: ${baseSize}px;
+    }
   }
 
   body {
@@ -14,13 +18,7 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;
     min-height: 100vh;
 
-    ${({p}) => `
-      padding: ${gs(p)};
-      
-      @media (min-width: 768px) {
-        padding: ${gs(p * 3)};
-      }
-    `}
+    ${({p}) => `padding: ${gs(p)}`}
   }
 `;
 

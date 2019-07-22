@@ -1,7 +1,7 @@
 [ 
-  {"task":"Задание 1","done":true}, 
-  {"task":"Задание 2","done":true}, 
-  {"task":"Задание 3","done":false}, 
-  {"task":"Задание 4","done":false}, 
-  {"task":"Задание 5","done":true}
+  {"task":"Task 1","done":true}, 
+  {"task":"Task 2","done":true}, 
+  {"task":"Task 3","done":false}, 
+  {"task":"Task 4","done":false}, 
+  {"task":"Task 5","done":true}
 ]
