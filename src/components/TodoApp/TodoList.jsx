@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { getSize as gs } from '../../base/utils';
+import { getSize as gs, downloadObjectAsJson } from '../../base/utils';
 
 import { TodoAppContext } from './state/context';
-import { deleteTodo, toggleTodo } from './state/actions';
+import { deleteTodo, deleteAllTodos, toggleTodo } from './state/actions';
 
 import Icon from '../Icon';
 import Button from '../Button';
+import Spacer from '../Spacer';
 
 const TodoList = React.memo(() => {
   const { todos, dispatch } = React.useContext(TodoAppContext);
@@ -21,9 +22,12 @@ const TodoList = React.memo(() => {
     switch (el.name) {
       case 'toggle': return dispatch(toggleTodo(id));
       case 'delete': return dispatch(deleteTodo(id));
+      case 'deleteAll': return window.confirm('Are you sure?') && dispatch(deleteAllTodos());
       default:
     }
   }, [dispatch]);
+
+  const handleDownload = React.useCallback(() => downloadObjectAsJson(todos), [todos]);
 
   const map = ({ task, id, done }) => (
     <Todo key={id || task} data-id={id}>
@@ -37,7 +41,7 @@ const TodoList = React.memo(() => {
   )
 
   return todos.length === 0
-    ? <p style={{ color: 'red' }}>No todos to show.<br />Add a new one!</p>
+    ? <p style={{ color: '#da0606' }}>No todos to show.<br />Add a new one!</p>
     : (
       <>
         <Todos>
@@ -48,6 +52,18 @@ const TodoList = React.memo(() => {
         <Todos>
           {todos.filter(({ done }) => done).map(map)}
         </Todos>
+
+        <Spacer size={40} />
+
+        <Button onClick={handleClick} name="deleteAll" color="blue" block>
+          <Icon name="trash-can" /> Delete All
+        </Button>
+
+        <Spacer size={50} />
+
+        <Button onClick={handleDownload} name="download" color="green" block>
+          <Icon name="download" /> data.json
+        </Button>
       </>
     )
 });

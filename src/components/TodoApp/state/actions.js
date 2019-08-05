@@ -1,5 +1,6 @@
 export const NEW = 'NEW';
 export const DELETE = 'DELETE';
+export const DELETE_ALL = 'DELETE_all';
 export const TOGGLE = 'TOGGLE';
 export const RESET = 'RESET';
 
@@ -20,4 +21,8 @@ export const toggleTodo = id => ({
 
 export const resetTodos = () => ({
   type: RESET
-})
+});
+
+export const deleteAllTodos = () => ({
+  type: DELETE_ALL
+});

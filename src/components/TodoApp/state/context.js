@@ -34,6 +34,9 @@ const reducer = (todos, action) => {
       return newTodos;
     }
 
+    case ACTIONS.DELETE_ALL:
+      return [];
+
     case ACTIONS.RESET:
       return initialState;
 

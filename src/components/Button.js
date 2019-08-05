@@ -34,12 +34,18 @@ const Button = styled.button`
       color: white;
       &:hover, &:focus { background-color: ${colors.red.hover} }
       &.active, &:active { background-color: ${colors.red.active} }
-      `,
+    `,
     color === 'blue' && `
       background-color: ${colors.blue.base};
       color: white;
       &:hover, &:focus { background-color: ${colors.blue.hover} }
       &.active, &:active { background-color: ${colors.blue.active} }
+    `,
+    color === 'green' && `
+      background-color: ${colors.green.base};
+      color: white;
+      &:hover, &:focus { background-color: ${colors.green.hover} }
+      &.active, &:active { background-color: ${colors.green.active} }
     `,
     color === undefined && `
       background-color: ${colors.white.base};

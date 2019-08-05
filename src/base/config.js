@@ -15,5 +15,10 @@ export const colors = {
     base: '#fff',
     hover: '#ddd',
     active: '#ccc',
+  },
+  green: {
+    base: '#8bc34a',
+    hover: '#9ccc65',
+    active: '#aed581',
   }
 }

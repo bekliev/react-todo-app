@@ -7,7 +7,6 @@ import Title from '../Title';
 import Spacer from '../Spacer';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
-import TodoDownload from './TodoDownload';
 
 const TodoApp = React.memo(() => (
   <Box>
@@ -21,8 +20,6 @@ const TodoApp = React.memo(() => (
       <Spacer size={40} />
 
       <TodoList />
-
-      <TodoDownload />
     </TodoAppContextProvider>
   </Box>
 ));

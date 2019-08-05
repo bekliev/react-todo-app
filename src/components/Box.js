@@ -5,7 +5,7 @@ import { getSize as gs } from '../base/utils';
 
 const styles = {
   borderRadius: gs(28),
-  padding: [gs(72), gs(62), gs(166)].join(' '),
+  padding: [gs(72), gs(62)].join(' '),
   maxWidth: gs(870),
 };
 
