@@ -14,6 +14,7 @@ const Button = styled.button`
 
   cursor: pointer;
   color: white;
+  font-weight: 600;
 
   padding: ${gs(22)} ${gs(30)};
   min-width: ${gs(200)};
