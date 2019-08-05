@@ -28,7 +28,7 @@ const TodoList = React.memo(() => {
   const map = ({ task, id, done }) => (
     <Todo key={id || task} data-id={id}>
       <TodoTitle className={done ? 'done' : ''} onClick={handleClick} name="toggle">
-        {task}<div>done: {String(done)}</div>
+        {task}
       </TodoTitle>
       <Button color="blue" onClick={handleClick} name="delete">
         <Icon name="trash-can" />
@@ -74,6 +74,7 @@ const TodoTitle = styled(Button)`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
 
   word-break: break-word;
 
