@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { getSize as gs } from '../../base/utils';
 
 import { TodoAppContext } from './state/context';
-import { deleteTodo } from './state/actions';
+import { deleteTodo, toggleTodo } from './state/actions';
 
 import Icon from '../Icon';
 import Button from '../Button';
@@ -12,14 +12,19 @@ import Button from '../Button';
 const TodoList = React.memo(() => {
   const { todos, dispatch } = React.useContext(TodoAppContext);
 
-  console.log({ todos });
+  // console.log({ todos });
 
-  const handleClick = React.useCallback(e => {
-    // Prevent the default browser's action
-    e.preventDefault();
-
+  const handleToggle = React.useCallback(e => {
     // Retrieve required thing
-    const index = e.currentTarget.getAttribute('data-index');
+    const index = e.currentTarget.parentElement.getAttribute('data-index');
+
+    // Update the state
+    dispatch(toggleTodo(index));
+  }, [dispatch]);
+
+  const handleDelete = React.useCallback(e => {
+    // Retrieve required thing
+    const index = e.currentTarget.parentElement.getAttribute('data-index');
 
     // Update the state
     dispatch(deleteTodo(index));
@@ -30,9 +35,11 @@ const TodoList = React.memo(() => {
     : (
       <Todos>
         {todos.map(({ task, id, done }, index) => (
-          <Todo key={id || task}>
-            <TodoTitle>{task}<div>done: {String(done)}</div></TodoTitle>
-            <Button color="blue" onClick={handleClick} data-index={index}>
+          <Todo key={id || task} data-index={index}>
+            <TodoTitle className={done ? 'done' : ''} onClick={handleToggle}>
+              {task}<div>done: {String(done)}</div>
+            </TodoTitle>
+            <Button color="blue" onClick={handleDelete}>
               <Icon name="trash-can" />
             </Button>
           </Todo>
@@ -49,13 +56,29 @@ const Todos = styled.ol`
 
 const Todo = styled.li`
   display: flex;
-  align-items: center;
   margin-bottom: ${gs(24)};
 `;
 
-const TodoTitle = styled.div`
+const TodoTitle = styled(Button)`
   flex-grow: 1;
   font-weight: bold;
+
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+
+  > * {
+    margin: 0;
+  }
+
+  &.done {
+    text-decoration: line-through;
+    color: #bf002e;
+  }
 `;
 
 export default TodoList;

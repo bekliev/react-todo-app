@@ -31,7 +31,7 @@ const AddTodoForm = () => {
     <Form onSubmit={handleSubmit}>
       <Input placeholder="Task name" name="task-name" />
 
-      <Button type="submit" radius="0 8px 8px 0">
+      <Button color="red" type="submit" radius="0 8px 8px 0">
         <Icon name="plus" />
       </Button>
     </Form>
