@@ -12,12 +12,12 @@ import Button from '../Button';
 const AddTodoForm = () => {
   const { dispatch } = React.useContext(TodoAppContext);
 
-  const handleSubmit = React.useCallback(e => {
+  const handleSubmit = React.useCallback(event => {
     // Prevent the default browser's action
-    e.preventDefault();
+    event.preventDefault();
 
     // Retrieve required things
-    const field = e.currentTarget.elements['task-name'];
+    const field = event.currentTarget.elements['task-name'];
     const taskName = field.value;
 
     // Update the state
@@ -29,7 +29,7 @@ const AddTodoForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Input placeholder="Task name" name="task-name" />
+      <Input placeholder="Task name" name="task-name" required minLength="3" maxLength="200" />
 
       <Button color="red" type="submit" radius="0 8px 8px 0">
         <Icon name="plus" />

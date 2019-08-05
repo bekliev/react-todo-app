@@ -75,6 +75,8 @@ const TodoTitle = styled(Button)`
   flex-direction: column;
   align-items: flex-start;
 
+  word-break: break-word;
+
   > * {
     margin: 0;
   }
