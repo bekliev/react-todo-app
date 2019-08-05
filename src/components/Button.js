@@ -23,6 +23,11 @@ const Button = styled.button`
     margin: 0 ${gs(10)}
   }
 
+  ${({ block }) => block && `
+    display: flex;
+    width: 100%;
+  `}
+
   ${({ color }) => [
     color === 'red' && `
       background-color: ${colors.red.base};

@@ -14,9 +14,9 @@ const TodoDownload = React.memo(() => {
 
   return todos.length > 0 && (
     <>
-      <Spacer size={20} />
+      <Spacer size={70} />
 
-      <Button onClick={handleClick}>
+      <Button onClick={handleClick} color="red" block>
         <Icon name="download" /> data.json
       </Button>
     </>
