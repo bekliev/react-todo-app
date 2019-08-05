@@ -29,8 +29,8 @@ const TodoList = React.memo(() => {
     ? <p style={{ color: 'red' }}>No todos to show.<br />Add a new one!</p>
     : (
       <Todos>
-        {todos.map(({ task, done }, index) => (
-          <Todo key={task}>
+        {todos.map(({ task, id, done }, index) => (
+          <Todo key={id || task}>
             <TodoTitle>{task}<div>done: {String(done)}</div></TodoTitle>
             <Button color="blue" onClick={handleClick} data-index={index}>
               <Icon name="trash-can" />

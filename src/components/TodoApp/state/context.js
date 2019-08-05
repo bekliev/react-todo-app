@@ -13,6 +13,7 @@ const reducer = (todos, action) => {
       return [
         ...todos,
         {
+          id: +(new Date()),
           task: action.name,
           done: false,
         }
