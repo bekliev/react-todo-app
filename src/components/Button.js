@@ -7,8 +7,20 @@ import { getSize as gs } from '../base/utils';
 const Button = styled.button`
   border: 0;
   border-radius: ${({radius}) => radius};
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   cursor: pointer;
-  padding: ${gs(22)} ${gs(62)};
+  color: white;
+
+  padding: ${gs(22)} ${gs(30)};
+  min-width: ${gs(200)};
+
+  > * {
+    margin: 0 ${gs(10)}
+  }
 
   ${({ color }) => [
     color === 'red' && `
