@@ -14,37 +14,41 @@ const TodoList = React.memo(() => {
 
   // console.log({ todos });
 
-  const handleToggle = React.useCallback(e => {
+  const handleClick = React.useCallback(({ currentTarget: el }) => {
     // Retrieve required thing
-    const index = e.currentTarget.parentElement.getAttribute('data-index');
+    const id = el.parentElement.getAttribute('data-id');
 
-    // Update the state
-    dispatch(toggleTodo(index));
+    switch (el.name) {
+      case 'toggle': return dispatch(toggleTodo(id));
+      case 'delete': return dispatch(deleteTodo(id));
+      default:
+    }
   }, [dispatch]);
 
-  const handleDelete = React.useCallback(e => {
-    // Retrieve required thing
-    const index = e.currentTarget.parentElement.getAttribute('data-index');
-
-    // Update the state
-    dispatch(deleteTodo(index));
-  }, [dispatch]);
+  const map = ({ task, id, done }) => (
+    <Todo key={id || task} data-id={id}>
+      <TodoTitle className={done ? 'done' : ''} onClick={handleClick} name="toggle">
+        {task}<div>done: {String(done)}</div>
+      </TodoTitle>
+      <Button color="blue" onClick={handleClick} name="delete">
+        <Icon name="trash-can" />
+      </Button>
+    </Todo>
+  )
 
   return todos.length === 0
     ? <p style={{ color: 'red' }}>No todos to show.<br />Add a new one!</p>
     : (
-      <Todos>
-        {todos.map(({ task, id, done }, index) => (
-          <Todo key={id || task} data-index={index}>
-            <TodoTitle className={done ? 'done' : ''} onClick={handleToggle}>
-              {task}<div>done: {String(done)}</div>
-            </TodoTitle>
-            <Button color="blue" onClick={handleDelete}>
-              <Icon name="trash-can" />
-            </Button>
-          </Todo>
-        ))}
-      </Todos>
+      <>
+        <Todos>
+          {todos.filter(({ done }) => !done).map(map)}
+        </Todos>
+
+        <h2>Done</h2>
+        <Todos>
+          {todos.filter(({ done }) => done).map(map)}
+        </Todos>
+      </>
     )
 });
 

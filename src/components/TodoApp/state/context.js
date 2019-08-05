@@ -19,16 +19,20 @@ const reducer = (todos, action) => {
         }
       ];
 
-    case ACTIONS.DELETE:
+    case ACTIONS.DELETE: {
+      const index = todos.findIndex(({ id }) => id === action.id);
       return [
-        ...todos.slice(0, action.index),
-        ...todos.slice(action.index + 1)
+        ...todos.slice(0, index),
+        ...todos.slice(index + 1)
       ];
+    }
 
-    case ACTIONS.TOGGLE:
+    case ACTIONS.TOGGLE: {
+      const index = todos.findIndex(({ id }) => id === action.id);
       const newTodos = [...todos];
-      newTodos[action.index].done = !(newTodos[action.index].done);
+      newTodos[index].done = !(newTodos[index].done);
       return newTodos;
+    }
 
     case ACTIONS.RESET:
       return initialState;

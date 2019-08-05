@@ -8,14 +8,14 @@ export const newTodo = name => ({
   name,
 });
 
-export const deleteTodo = index => ({
+export const deleteTodo = id => ({
   type: DELETE,
-  index: Number(index),
+  id: Number(id),
 });
 
-export const toggleTodo = index => ({
+export const toggleTodo = id => ({
   type: TOGGLE,
-  index: Number(index),
+  id: Number(id),
 });
 
 export const resetTodos = () => ({
